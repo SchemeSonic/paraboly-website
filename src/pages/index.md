@@ -4,7 +4,7 @@ sections:
 - type: section_hero
   template: section_hero
   section_id: hero
-  title: Insight. Mobilized.
+  title: Insight. Mobilize.
   content: Gathering All Traffic Related Data, Turns It Into Actionable Insights.
   image: "/images/main.gif"
   actions:
