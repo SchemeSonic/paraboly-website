@@ -1,36 +1,35 @@
 ---
 label: Call to Action Section
 hide_body: true
-is_partial: true
 display_field: title
 fields:
-  - type: text
-    name: section_id
-    label: Element ID of this section
-    description: The element ID can be used to link to this section from another section
-  - type: text
-    name: title
-    label: Title
-    description: The title of this section
-  - type: text
-    name: subtitle
-    label: Subtitle
-    description: The subtitle of the section.
-  - type: field_group_list
-    name: actions
-    label: Action Buttons
-    fields:
-      - type: include
-        name: include_action
-        label: Action
-        template: action
-    config:
-      labelField: label
-  - type: text
-    name: type
-    label: Reference Type Name
-    description: 'Name of the Stackbit object model, used by fields of type reference'
-    hidden: true
-    default: section_cta
-    config:
-      required: true
+- type: text
+  name: section_id
+  label: Element ID of this section
+  description: The element ID can be used to link to this section from another section
+- type: text
+  name: title
+  label: Title
+  description: The title of this section
+- type: text
+  name: subtitle
+  label: Subtitle
+  description: The subtitle of the section.
+- type: field_group_list
+  name: actions
+  label: Action Buttons
+  fields:
+  - type: include
+    name: include_action
+    label: Action
+    template: action
+  config:
+    labelField: label
+- type: text
+  name: type
+  label: Reference Type Name
+  description: Name of the Stackbit object model, used by fields of type reference
+  hidden: true
+  default: section_cta
+  config:
+    required: true

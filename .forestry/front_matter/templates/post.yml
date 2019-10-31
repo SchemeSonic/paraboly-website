@@ -1,48 +1,48 @@
 ---
 label: Post
-is_partial: false
+hide_body: false
 fields:
-  - type: text
-    name: title
-    label: Title
-    description: The title of the post.
-    config:
-      required: true
-  - type: text
-    name: subtitle
-    label: Subtitle
-    description: The text shown just below the Title or the Featured Image.
-  - type: datetime
-    name: date
-    label: Date
-    config:
-      required: true
-  - type: file
-    name: thumb_img_path
-    label: Blog Feed Image
-    description: The image shown in the blog feed.
-  - type: file
-    name: img_path
-    label: Featured Image
-    description: The image shown below the title.
-  - type: text
-    name: excerpt
-    label: Excerpt
-    description: The excerpt of the post displayed in the blog feed.
-  - type: text
-    name: template
-    label: Template
-    hidden: true
-    default: post
-    config:
-      required: true
+- type: text
+  name: title
+  label: Title
+  description: The title of the post.
+  config:
+    required: true
+- type: text
+  name: subtitle
+  label: Subtitle
+  description: The text shown just below the Title or the Featured Image.
+- type: datetime
+  name: date
+  label: Date
+  config:
+    required: true
+- type: file
+  name: thumb_img_path
+  label: Blog Feed Image
+  description: The image shown in the blog feed.
+- type: file
+  name: img_path
+  label: Featured Image
+  description: The image shown below the title.
+- type: text
+  name: excerpt
+  label: Excerpt
+  description: The excerpt of the post displayed in the blog feed.
+- type: text
+  name: template
+  label: Template
+  hidden: true
+  default: post
+  config:
+    required: true
 pages:
-  - src/pages/posts/Azimuth-Improvements.md
-  - src/pages/posts/Customer-Loyalty.md
-  - src/pages/posts/Customer-Service-Skills-that-Every-Employee-Needs.md
-  - src/pages/posts/Design-Azimuth.md
-  - src/pages/posts/Design-Team-Collaborates.md
-  - src/pages/posts/Sales-as-Service.md
-  - src/pages/posts/Set-Big-Goals.md
-  - src/pages/posts/User-Journey-Mapping.md
-  - src/pages/posts/working-from-home.md
+- src/pages/posts/working-from-home.md
+- src/pages/posts/User-Journey-Mapping.md
+- src/pages/posts/Set-Big-Goals.md
+- src/pages/posts/Sales-as-Service.md
+- src/pages/posts/Design-Team-Collaborates.md
+- src/pages/posts/Design-Azimuth.md
+- src/pages/posts/Customer-Service-Skills-that-Every-Employee-Needs.md
+- src/pages/posts/Customer-Loyalty.md
+- src/pages/posts/Azimuth-Improvements.md

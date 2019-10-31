@@ -1,71 +1,70 @@
 ---
 label: Pricing Section
 hide_body: true
-is_partial: true
 display_field: title
 fields:
-  - type: text
-    name: section_id
-    label: Element ID of this section
-    description: The element ID can be used to link to this section from another section
+- type: text
+  name: section_id
+  label: Element ID of this section
+  description: The element ID can be used to link to this section from another section
+- type: text
+  name: title
+  label: Title
+  description: The title of this section
+- type: text
+  name: subtitle
+  label: Subtitle
+  description: The subtitle of the section.
+- type: select
+  name: bg
+  label: Background
+  description: The background of the section.
+  default: gray
+  config:
+    source:
+      type: custom
+    options:
+    - gray
+    - white
+- type: field_group_list
+  name: pricingplans
+  label: Pricing Plans
+  fields:
   - type: text
     name: title
     label: Title
-    description: The title of this section
   - type: text
-    name: subtitle
-    label: Subtitle
-    description: The subtitle of the section.
-  - type: select
-    name: bg
-    label: Background
-    description: The background of the section.
-    default: gray
+    name: price
+    label: Price
+  - type: textarea
+    name: details
+    label: Details
     config:
-      source:
-        type: custom
-      options:
-        - gray
-        - white
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: boolean
+    name: highlight
+    label: Highlight
+    description: Make the plan stand out by adding a distinctive style.
+    default: false
   - type: field_group_list
-    name: pricingplans
-    label: Pricing Plans
+    name: actions
+    label: Action Buttons
     fields:
-      - type: text
-        name: title
-        label: Title
-      - type: text
-        name: price
-        label: Price
-      - type: textarea
-        name: details
-        label: Details
-        config:
-          wysiwyg: true
-          schema:
-            format: markdown
-      - type: boolean
-        name: highlight
-        label: Highlight
-        description: Make the plan stand out by adding a distinctive style.
-        default: false
-      - type: field_group_list
-        name: actions
-        label: Action Buttons
-        fields:
-          - type: include
-            name: include_action
-            label: Action
-            template: action
-        config:
-          labelField: label
+    - type: include
+      name: include_action
+      label: Action
+      template: action
     config:
-      labelField: title
-  - type: text
-    name: type
-    label: Reference Type Name
-    description: 'Name of the Stackbit object model, used by fields of type reference'
-    hidden: true
-    default: section_pricing
-    config:
-      required: true
+      labelField: label
+  config:
+    labelField: title
+- type: text
+  name: type
+  label: Reference Type Name
+  description: Name of the Stackbit object model, used by fields of type reference
+  hidden: true
+  default: section_pricing
+  config:
+    required: true

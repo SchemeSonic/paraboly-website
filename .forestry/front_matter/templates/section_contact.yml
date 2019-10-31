@@ -1,45 +1,44 @@
 ---
 label: Contact Section
 hide_body: true
-is_partial: true
 display_field: title
 fields:
-  - type: text
-    name: section_id
-    label: Element ID of this section
-    description: The element ID can be used to link to this section from another section
-  - type: text
-    name: title
-    label: Title
-    description: The title of this section
-  - type: text
-    name: subtitle
-    label: Subtitle
-    description: The text shown below the title.
-  - type: textarea
-    name: content
-    label: Content
-    description: 'The text content of the section, appears before contact form'
-    config:
-      wysiwyg: true
-      schema:
-        format: markdown
-  - type: select
-    name: bg
-    label: Background
-    description: The background of the section.
-    default: gray
-    config:
-      source:
-        type: custom
-      options:
-        - gray
-        - white
-  - type: text
-    name: type
-    label: Reference Type Name
-    description: 'Name of the Stackbit object model, used by fields of type reference'
-    hidden: true
-    default: section_contact
-    config:
-      required: true
+- type: text
+  name: section_id
+  label: Element ID of this section
+  description: The element ID can be used to link to this section from another section
+- type: text
+  name: title
+  label: Title
+  description: The title of this section
+- type: text
+  name: subtitle
+  label: Subtitle
+  description: The text shown below the title.
+- type: textarea
+  name: content
+  label: Content
+  description: The text content of the section, appears before contact form
+  config:
+    wysiwyg: true
+    schema:
+      format: markdown
+- type: select
+  name: bg
+  label: Background
+  description: The background of the section.
+  default: gray
+  config:
+    source:
+      type: custom
+    options:
+    - gray
+    - white
+- type: text
+  name: type
+  label: Reference Type Name
+  description: Name of the Stackbit object model, used by fields of type reference
+  hidden: true
+  default: section_contact
+  config:
+    required: true
