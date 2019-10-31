@@ -1,0 +1,14 @@
+---
+label: Section
+hide_body: true
+is_partial: true
+display_field: title
+fields:
+  - type: text
+    name: section_id
+    label: Element ID of this section
+    description: The element ID can be used to link to this section from another section
+  - type: text
+    name: title
+    label: Title
+    description: The title of this section

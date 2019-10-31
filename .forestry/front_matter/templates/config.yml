@@ -1,0 +1,120 @@
+---
+label: Global Site Config
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Title
+    description: Site title
+    config:
+      required: true
+  - type: select
+    name: palette
+    label: Color Palette
+    description: The color palette of the theme.
+    default: blue
+    config:
+      source:
+        type: custom
+      options:
+        - blue
+        - purple
+        - green
+        - orange
+  - type: field_group
+    name: header
+    label: Header Configuration
+    fields:
+      - type: text
+        name: title
+        label: Header Title
+        description: The title displayed in the header if no logo image added.
+      - type: file
+        name: logo_img
+        label: Logo
+        description: The logo image displayed in the header.
+      - type: boolean
+        name: has_nav
+        label: Enable Navigation Menu
+        description: Display the navigation menu bar in the header.
+        default: true
+      - type: field_group
+        name: menu
+        label: Menu Action Buttons
+        fields:
+          - type: field_group_list
+            name: actions
+            label: Action Buttons
+            description: The action buttons displayed in the menu.
+            fields:
+              - type: include
+                name: include_action
+                label: Action
+                template: action
+            config:
+              labelField: label
+  - type: field_group
+    name: footer
+    label: Footer Configuration
+    fields:
+      - type: file
+        name: logo_img
+        label: Logo
+        description: The logo image displayed in the footer.
+      - type: text
+        name: tagline
+        label: Footer Tagline
+        description: The tagline displayed in the footer.
+      - type: boolean
+        name: has_nav
+        label: Enable Navigation Menu
+        description: Display the secondary navigation menu in the footer.
+        default: true
+      - type: text
+        name: nav_title
+        label: Menu Title
+        description: The title of the secondary menu displayed in the footer.
+      - type: boolean
+        name: has_social
+        label: Enable Social Links
+        description: Display social links in the footer.
+        default: true
+      - type: text
+        name: social_title
+        label: Social Links Title
+        description: The title of the social links list displayed in the footer.
+      - type: boolean
+        name: has_subscribe
+        label: Enable Subscribe
+        description: Display the newsletter subscription form in the footer.
+        default: true
+      - type: text
+        name: subscribe_title
+        label: Subscribe Title
+        description: The title of the subscribe block displayed in the footer.
+      - type: text
+        name: subscribe_content
+        label: Subscribe Content
+        description: The text content in the subscribe block displayed in the footer.
+      - type: text
+        name: content
+        label: Footer Content
+        description: The copyright text displayed in the footer.
+      - type: field_group_list
+        name: links
+        label: Links
+        description: A list of links displayed in the footer.
+        fields:
+          - type: text
+            name: text
+            label: Link text
+          - type: text
+            name: url
+            label: URL
+          - type: boolean
+            name: new_window
+            label: Open in new window
+            default: true
+        config:
+          labelField: text

@@ -1,0 +1,19 @@
+{
+    "links": [
+        {
+            "type": "twitter",
+            "title": "Twitter",
+            "url": "https://twitter.com/"
+        },
+        {
+            "type": "instagram",
+            "title": "Instagram",
+            "url": "https://www.instagram.com/"
+        },
+        {
+            "type": "linkedin",
+            "title": "LinkedIn",
+            "url": "https://www.linkedin.com/"
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+---
+label: Landing Page
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Title
+    description: The title of the page.
+    config:
+      required: true
+  - type: blocks
+    name: sections
+    label: Sections
+    description: Home page sections.
+    template_types:
+      - section_content
+      - section_cta
+      - section_faq
+      - section_features
+      - section_hero
+      - section_posts
+      - section_pricing
+      - section_reviews
+      - section_contact
+  - type: text
+    name: template
+    label: Template
+    hidden: true
+    default: landing
+    config:
+      required: true
+pages:
+  - src/pages/contact.md
+  - src/pages/features.md
+  - src/pages/index.md
+  - src/pages/pricing.md

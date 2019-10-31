@@ -1,0 +1,649 @@
+stackbitVersion: ~0.2.0
+ssgName: gatsby
+ssgVersion: 0.1.12
+buildCommand: ./ssg-build.sh
+publishDir: public
+staticDir: static
+uploadDir: images
+dataDir: src/data
+pagesDir: src/pages
+pageLayoutKey: template
+metadata:
+  title: Azimuth
+  description: A sleek SaaS theme
+  author: Stackbit
+  authorURL: 'https://www.stackbit.com'
+  images:
+    small: images/demo-256x192.png
+    large: images/demo-1024x768.png
+stackbit_banner:
+  show_banner: true
+  name: Azimuth
+  create_url: 'https://app.stackbit.com/create?theme=azimuth'
+  github_url: 'https://github.com/stackbithq/stackbit-theme-azimuth'
+models:
+  config:
+    type: config
+    label: Global Site Config
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: Site title
+        required: true
+      - type: enum
+        name: palette
+        label: Color Palette
+        description: The color palette of the theme.
+        options:
+          - blue
+          - purple
+          - green
+          - orange
+        default: blue
+      - type: object
+        name: header
+        label: Header Configuration
+        fields:
+          - type: string
+            name: title
+            label: Header Title
+            description: The title displayed in the header if no logo image added.
+          - type: image
+            name: logo_img
+            label: Logo
+            description: The logo image displayed in the header.
+          - type: boolean
+            name: has_nav
+            label: Enable Navigation Menu
+            description: Display the navigation menu bar in the header.
+            default: true
+          - type: object
+            name: menu
+            label: Menu Action Buttons
+            fields:
+              - type: list
+                name: actions
+                label: Action Buttons
+                description: The action buttons displayed in the menu.
+                items:
+                  type: action
+      - type: object
+        name: footer
+        label: Footer Configuration
+        fields:
+          - type: image
+            name: logo_img
+            label: Logo
+            description: The logo image displayed in the footer.
+          - type: string
+            name: tagline
+            label: Footer Tagline
+            description: The tagline displayed in the footer.
+          - type: boolean
+            name: has_nav
+            label: Enable Navigation Menu
+            description: Display the secondary navigation menu in the footer.
+            default: true
+          - type: string
+            name: nav_title
+            label: Menu Title
+            description: The title of the secondary menu displayed in the footer.
+          - type: boolean
+            name: has_social
+            label: Enable Social Links
+            description: Display social links in the footer.
+            default: true
+          - type: string
+            name: social_title
+            label: Social Links Title
+            description: The title of the social links list displayed in the footer.
+          - type: boolean
+            name: has_subscribe
+            label: Enable Subscribe
+            description: Display the newsletter subscription form in the footer.
+            default: true
+          - type: string
+            name: subscribe_title
+            label: Subscribe Title
+            description: The title of the subscribe block displayed in the footer.
+          - type: string
+            name: subscribe_content
+            label: Subscribe Content
+            description: The text content in the subscribe block displayed in the footer.
+          - type: string
+            name: content
+            label: Footer Content
+            description: The copyright text displayed in the footer.
+          - type: list
+            name: links
+            label: Links
+            description: A list of links displayed in the footer.
+            items:
+              type: object
+              labelField: text
+              fields:
+                - type: string
+                  name: text
+                  label: Link text
+                - type: string
+                  name: url
+                  label: URL
+                  widget: url
+                - type: boolean
+                  name: new_window
+                  label: Open in new window
+                  default: true
+  social:
+    type: data
+    file: social.json
+    label: Social Links
+    fields:
+      - type: list
+        name: links
+        label: Social Links
+        description: A list of social links displayed in the footer.
+        items:
+          type: object
+          labelField: title
+          fields:
+            - type: string
+              name: type
+              label: Type
+              hidden: true
+            - type: string
+              name: title
+              label: Title
+              required: true
+            - type: string
+              name: url
+              label: URL
+              widget: url
+              required: true
+  author:
+    type: data
+    file: author.json
+    label: Author
+    fields:
+      - type: string
+        name: name
+        label: Name
+      - type: string
+        name: email
+        label: Email
+      - type: image
+        name: avatar
+        label: Avatar
+  landing:
+    type: page
+    label: Landing Page
+    template: landing
+    hideContent: true
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page.
+        required: true
+      - type: list
+        name: sections
+        label: Sections
+        description: Home page sections.
+        items:
+          type: reference
+          labelField: title
+          models:
+            - section_content
+            - section_cta
+            - section_faq
+            - section_features
+            - section_hero
+            - section_posts
+            - section_pricing
+            - section_reviews
+            - section_contact
+      - type: page_menus
+        name: menus
+        label: Landing Page Menus
+        description: Which menus should this page show up in
+  blog:
+    type: page
+    label: Blog
+    template: blog
+    file: blog/index.md
+    hideContent: true
+    singleInstance: true
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page.
+        required: true
+      - type: page_menus
+        name: menus
+        label: Blog Menus
+        description: Which menus should this page show up in
+  page:
+    type: page
+    label: Page
+    template: page
+    exclude: posts/**
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The text shown below the page title.
+      - type: image
+        name: img_path
+        label: Image
+        description: The image shown below the page title.
+      - type: page_menus
+        name: menus
+        label: Page Menus
+        description: Which menus should this page show up in
+  post:
+    type: page
+    label: Post
+    template: post
+    folder: posts
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the post.
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The text shown just below the Title or the Featured Image.
+      - type: date
+        name: date
+        label: Date
+        required: true
+      - type: image
+        name: thumb_img_path
+        label: Blog Feed Image
+        description: The image shown in the blog feed.
+      - type: image
+        name: img_path
+        label: Featured Image
+        description: The image shown below the title.
+      - type: string
+        name: excerpt
+        label: Excerpt
+        description: The excerpt of the post displayed in the blog feed.
+      - type: page_menus
+        name: menus
+        label: Post Menus
+        description: Which menus should this page show up in
+  section:
+    type: object
+    label: Section
+    labelField: title
+    fields:
+      - type: string
+        name: section_id
+        label: Element ID of this section
+        description: >-
+          The element ID can be used to link to this section from another
+          section
+      - type: string
+        name: title
+        label: Title
+        description: The title of this section
+  section_content:
+    type: object
+    label: Content Section
+    extends:
+      - section
+    fields:
+      - type: markdown
+        name: content
+        label: Content
+        description: The text content of the section.
+      - type: image
+        name: image
+        label: Image
+        description: The image of the section.
+      - type: enum
+        name: bg
+        label: Background
+        description: The background of the section.
+        options:
+          - gray
+          - white
+        default: gray
+      - type: list
+        name: actions
+        label: Action Buttons
+        items:
+          type: action
+  section_cta:
+    type: object
+    label: Call to Action Section
+    extends:
+      - section
+    fields:
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the section.
+      - type: list
+        name: actions
+        label: Action Buttons
+        items:
+          type: action
+  section_faq:
+    type: object
+    label: FAQ Section
+    extends:
+      - section
+    fields:
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the section.
+      - type: enum
+        name: bg
+        label: Background
+        description: The background of the section.
+        options:
+          - gray
+          - white
+        default: gray
+      - type: list
+        name: faqitems
+        label: FAQ Items
+        items:
+          type: object
+          label: FAQ Item
+          labelField: question
+          fields:
+            - type: string
+              name: question
+              label: Question
+            - type: markdown
+              name: answer
+              label: Answer
+  section_features:
+    type: object
+    label: Features Section
+    extends:
+      - section
+    fields:
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the section.
+      - type: enum
+        name: bg
+        label: Background
+        description: The background of the section.
+        options:
+          - gray
+          - white
+        default: gray
+      - type: list
+        name: featureslist
+        label: Features List
+        items:
+          type: object
+          label: Feature
+          labelField: title
+          fields:
+            - type: string
+              name: title
+              label: Title
+            - type: markdown
+              name: content
+              label: Content
+              description: The text content of the feature.
+            - type: image
+              name: image
+              label: Image
+              description: The image of the feature.
+            - type: list
+              name: actions
+              label: Action Buttons
+              items:
+                type: action
+  section_hero:
+    type: object
+    label: Hero Section
+    extends:
+      - section
+    fields:
+      - type: markdown
+        name: content
+        label: Content
+        description: The text content of the section.
+      - type: image
+        name: image
+        label: Image
+        description: The image of the section.
+      - type: list
+        name: actions
+        label: Action Buttons
+        items:
+          type: action
+  section_posts:
+    type: object
+    label: Posts List
+    extends:
+      - section
+    fields:
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the section.
+      - type: enum
+        name: bg
+        label: Background
+        description: The background of the section.
+        options:
+          - gray
+          - white
+        default: gray
+  section_pricing:
+    type: object
+    label: Pricing Section
+    extends:
+      - section
+    fields:
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the section.
+      - type: enum
+        name: bg
+        label: Background
+        description: The background of the section.
+        options:
+          - gray
+          - white
+        default: gray
+      - type: list
+        name: pricingplans
+        label: Pricing Plans
+        items:
+          type: object
+          label: Plan
+          labelField: title
+          fields:
+            - type: string
+              name: title
+              label: Title
+            - type: string
+              name: price
+              label: Price
+            - type: markdown
+              name: details
+              label: Details
+            - type: boolean
+              name: highlight
+              label: Highlight
+              description: Make the plan stand out by adding a distinctive style.
+              default: false
+            - type: list
+              name: actions
+              label: Action Buttons
+              items:
+                type: action
+  section_reviews:
+    type: object
+    label: Reviews Section
+    extends:
+      - section
+    fields:
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the section.
+      - type: enum
+        name: bg
+        label: Background
+        description: The background of the section.
+        options:
+          - gray
+          - white
+        default: gray
+      - type: list
+        name: reviews
+        label: Reviews
+        items:
+          type: object
+          label: Review
+          labelField: author
+          fields:
+            - type: string
+              name: author
+              label: Author
+            - type: image
+              name: avatar
+              label: Avatar
+            - type: string
+              name: content
+              label: Content
+  section_contact:
+    type: object
+    label: Contact Section
+    extends:
+      - section
+    fields:
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The text shown below the title.
+      - type: markdown
+        name: content
+        label: Content
+        description: 'The text content of the section, appears before contact form'
+      - type: enum
+        name: bg
+        label: Background
+        description: The background of the section.
+        options:
+          - gray
+          - white
+        default: gray
+  action:
+    type: object
+    label: Action
+    labelField: label
+    fields:
+      - type: string
+        name: label
+        label: Label
+        required: true
+        description: The text displayed inside the button.
+      - type: string
+        name: url
+        label: Button URL
+        widget: url
+  site_menus:
+    type: data
+    file: menus.json
+    label: Site Menus
+    labelField: null
+    description: >-
+      Site menus model, defines list of menus that can be specified from within
+      site configuration
+    fields:
+      - type: list
+        name: secondary
+        label: Secondary menu
+        description: List of items for Secondary menu
+        items:
+          type: site_menu_item
+      - type: list
+        name: main
+        label: Main menu
+        description: List of items for Main menu
+        items:
+          type: site_menu_item
+  site_menu_item:
+    type: object
+    label: Site Menu Item
+    labelField: title
+    description: 'Site menu item model, defines fields for a single site menu item'
+    fields:
+      - type: string
+        name: identifier
+        label: Identifier
+        description: >-
+          The identifier of a menu item could be used as a parent menu of
+          another menu item
+        required: true
+      - type: string
+        name: title
+        label: Title
+        description: The title of the menu item
+        required: true
+      - type: string
+        name: url
+        label: URL
+        description: The URL the menu item links to
+        required: true
+      - type: number
+        name: weight
+        label: Weight
+        description: Position for sorting
+  page_menus:
+    type: object
+    label: Page Menus
+    labelField: null
+    description: 'Page menus model, defines menus that can be specified from within pages'
+    fields:
+      - type: page_menu_item
+        name: secondary
+        label: Secondary menu item
+        description: Secondary menu item for this page
+      - type: page_menu_item
+        name: main
+        label: Main menu item
+        description: Main menu item for this page
+  page_menu_item:
+    type: object
+    label: Page Menu Item
+    labelField: title
+    description: 'Page menu item model, defines fields for a single page menu item'
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the menu item
+      - type: number
+        name: weight
+        label: Weight
+        description: Position for sorting
+      - type: string
+        name: identifier
+        label: Identifier
+        description: >-
+          The identifier of a menu item could be used as a parent menu of
+          another menu item
