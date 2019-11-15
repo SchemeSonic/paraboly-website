@@ -15,8 +15,8 @@
     }
   },
   "footer": {
-    "logo_img": "images/logo_alt.png",
-    "tagline": "SaaS theme by Stackbit",
+    "logo_img": "/images/parabol_signature.png",
+    "tagline": "Made with ❤️ in Ankara",
     "has_nav": true,
     "nav_title": "Company",
     "has_social": true,
@@ -24,11 +24,11 @@
     "has_subscribe": true,
     "subscribe_title": "Subscribe",
     "subscribe_content": "Stay up to date with our latest developments.",
-    "content": "&copy; Stackbit. All rights reserved.",
+    "content": "&copy; Paraboly. All rights reserved.",
     "links": [
       {
-        "text": "Made with Stackbit",
-        "url": "https://www.stackbit.com",
+        "text": "Made with ❤️  in Ankara",
+        "url": "https://www.paraboly.com",
         "new_window": true
       }
     ]
